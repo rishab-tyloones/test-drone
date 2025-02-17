@@ -1,5 +1,3 @@
 FROM nginx:latest
 
-WORKDIR /var/www/html
-
-COPY index.html .
+COPY index.html /usr/share/nginx/html/index.html
