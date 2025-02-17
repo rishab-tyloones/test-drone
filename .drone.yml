@@ -1,0 +1,23 @@
+kind: pipeline
+type: docker
+name: build-image
+
+trigger:
+  event:
+    - push
+  branch:
+    - main
+
+steps:
+  - name: push-to-ecr
+    image: plugins/ecr
+    settings:
+      access_key:
+        from_secret: REGISTRY_ACCESS_KEY
+      secret_key:
+        from_secret: REGISTRY_SECRET_KEY
+      region:
+        from_secret: REGISTRY_REGION
+      repo: tyloones-frontend
+      registry:
+        from_secret: REGISTRY_URL
